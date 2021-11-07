@@ -1,5 +1,4 @@
 目录
-- [缘由](#intro)
 - [安装calibre](#intro)
 - [文档导出效果](#effect)
 - [快速体验](#quick)
@@ -12,26 +11,9 @@
 	- [其它语言](#tutorial-other)
 - [原理](#principle)
 - [注意事项](#attention)
-- [精神上支持我](#support)
-- [markdown文档如何转成pdf、epub、mobi](#markdown)
 
-通过calibre，将markdown和html转成epub、mobi、pdf等格式文档。
-
-> 说明(于2018-06-02)：calibre将HTML转成mobi等格式时请注意配置好各项配置参数到合理值，同时注意自己的HTML的样式调整，特别是在mobi格式的时候，html的CSS样式，如`background:#dddddd`设置背景色，颜色不生效，需要用`background-color:#dddddd`才会生效。
-目前经过多次测试，生成文档效果不佳的问题，主要是配置参数如字体大小和CSS样式问题造成的。同时，为了方便在epub等阅读器上的阅读体验，可以将body标签的CSS背景色设置为透明。
-
-
-
-<a name="intro"></a>
-## 缘由
-
-事情是这样的：我们公司 [掘金量化](https://www.myquant.cn)(跟[掘金](https://juejin.im)是`javascript`和`java`的关系) 让我开发公司官网，官网的帮助中心文档，需要生成pdf离线文档以方便用户阅读和使用，但是使用`wkhtmltopdf`生成PDF文档，效果不是很理想。
-
-看着gitbook和看云生成的PDF文档，非常完美，然后把从两个站点下载的PDF文档的后缀改成了`.xml`格式，文本编辑器打开一看，用的居然是`calibre`，然后当时捣鼓了半个月，终于把问题解决。
-
-感觉很多企业和个人可能也会有同样的需求，所以干脆将`calibre`的使用封装一下，开源出来，以方便更多的人。
-
-> 当前文档，会告诉你使用方式和生成原理，以便你也可以根据自己掌握的编程语言封装一个工具类
+基于https://github.com/TruthHun/converter
+通过calibre，将markdown和html转成docx、epub、mobi、pdf等格式文档。
 
 <a name="install"></a>
 ## 安装calibre
@@ -44,9 +26,6 @@ ebook-convert --version
 <a name="effect"></a>
 ## 文档导出效果
 案例使用的是无闻的《Gogs中文文档》，文档地址：https://www.bookstack.cn/books/gogs_zh ，可以访问该地址查看文档导出的实际效果。
-
-截图：
-![文档导出效果](effect.png)
 
 <a name="quick"></a>
 ## 快速体验
@@ -64,12 +43,6 @@ ebook-convert --version
 ./converter ../../example/gogs_zh/config.json
 ```
 执行成功之后，在`example/gogs_zh/output`下可以看到导出的文档
-
-<a name="example"></a>
-## 使用案例
-- 掘金量化 https://www.myquant.cn (这是我们公司的官网，做量化投资的。戳进去，"帮助中心"里面可以看到文档导出效果)
-- 书栈网(BookStack) https://www.bookstack.cn (基于MinDoc做的二次开发的站点，开源地址：https://github.com/TruthHun/BookStack)
-- MinDoc  https://github.com/lifei6671/mindoc
 
 <a name="config"></a>
 ## 配置文件
@@ -275,19 +248,6 @@ ebook-convert content.epub output/book.pdf [options]
 <a name="attention"></a>
 ## 注意事项
 - HTML中不要有使用js代码渲染文档内容，因为js是不会被执行的
-
-<a name="support"></a>
-## 精神上支持我
-虽然我很缺钱...
-但是得到他人的肯定和认可比什么都重要。
-如果当前项目帮到了你，请给项目一个star，以鼓励我在开源的路上能走的更好、更远。
-附自己业余时间搞的一些站点，支持我，可以点击访问一下：
-- IT文库  http://wenku.it
-- 书栈(BookStack) http://www.bookstack.cn
-
-<a name="markdown"></a>
-## markdown文档如何转成pdf、epub、mobi
-说实话，这个我没仔细去研究过。思路就是将markdown文档转成HTML(毕竟这样比较好控制显示样式)，然后再通过当前工具再转成PDF文档等。网上应该有更好的方法，如果大家找到了，麻烦也分享一下。
 
 
 
